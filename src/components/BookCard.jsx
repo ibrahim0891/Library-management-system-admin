@@ -8,8 +8,8 @@ export const BookThumbnail = ({ book  , customClassName}) => {
     return (
         <>
             <div className={`relative aspect-[2/3] w-24 ${customClassName}`}>
-                <img className="h-full  rounded-sm shadow-md" src={book.imageLink} alt={book.bookName} />
-                <div className="absolute bottom-2 right-2 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                <img className="h-full rounded-sm shadow-md" src={book.imageLink} alt={book.bookName} />
+                <div className="absolute px-3 py-1 text-xs font-bold bg-yellow-400 rounded-full shadow-sm bottom-2 right-2">
                     ★ {book.rating}/5
                 </div>
             </div>
@@ -20,8 +20,8 @@ export const BookThumbnail = ({ book  , customClassName}) => {
 export const BookCardInformation = ({ book }) => {
     return (
         <div className=" 1/2">
-            <h2 className="font-bold text-2xl mb-2 text-gray-800 leading-tight hover:text-blue-600 transition-colors duration-200">{book.bookName}</h2>
-            <p className="text-gray-700 text-base mb-3 italic font-serif">By {book.authorName}</p>
+            <h2 className="mb-2 text-2xl font-bold leading-tight text-gray-800 transition-colors duration-200 hover:text-blue-600">{book.bookName}</h2>
+            <p className="mb-3 font-serif text-base italic text-gray-700">By {book.authorName}</p>
             <div className="space-y-2 text-sm text-gray-600">
                 <p className="flex items-center">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
@@ -42,15 +42,15 @@ export const BookCardInformation = ({ book }) => {
 
 const BookCard = ({ book }) => {
     return (
-        <div key={book.id} className="bg-white border rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg w-full px-4 py-6">
+        <div key={book.id} className="w-full px-4 py-6 overflow-hidden transition-all duration-300 bg-white border rounded-lg hover:shadow-lg">
             <Link to={`/app/${book._id}`} className="flex-grow">
                 <div className="flex flex-col h-full">
-                    <div className="flex space-x-4 items-start ">
+                    <div className="flex items-start space-x-4 ">
                         <BookThumbnail book={book} className='w-24' />
                         <BookCardInformation book={book} />
                     </div>
-                    <div className="flex justify-between space-x-4 mt-auto hidden">
-                        <button className="bg-gray-100 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded transition duration-200 ease-in-out w-1/2 flex items-center justify-center">
+                    <div className="flex justify-between hidden mt-auto space-x-4">
+                        <button className="flex items-center justify-center w-1/2 px-4 py-2 font-semibold text-gray-800 transition duration-200 ease-in-out bg-gray-100 rounded hover:bg-gray-300">
                             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                             Edit
                         </button>
@@ -70,7 +70,7 @@ const BookCard = ({ book }) => {
  */
 const BookCards = ({ books }) => {
     return (
-        <div className=" rounded w-full grid  lg:grid-cols-2 gap-4 p-4 px-0">
+        <div className="grid w-full gap-4 p-4 px-0 rounded lg:grid-cols-2">
             {books.map((book) => (
                 <BookCard key={book.id} book={book} />
             ))
@@ -78,6 +78,7 @@ const BookCards = ({ books }) => {
         </div >
     )
 }
+
 
 
 export { BookCard, BookCards };

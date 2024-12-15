@@ -4,10 +4,11 @@ import { Books, House, List, Question } from "phosphor-react";
 import { Book, Users, Calendar, Gear } from "phosphor-react";
 import { Link, NavLink } from "react-router-dom";
 const adminNavItems = [
-    { name: "Dashboard", icon: House, href: "/dashboard", active: true },
-    { name: "Books", icon: Books, href: "/books" },
-    { name: "Members", icon: Users, href: "/members" },
-    { name: "Checkouts", icon: Calendar, href: "/checkouts" },
+    { name: "Home", icon: House, href: "/dashboard", active: true },
+    { name: "Catagory", icon: Books, href: "/books" },
+    { name: "My Library", icon: BookOpen, href: "/members" },
+    { name: "Faviorite", icon: Star, href: "/checkouts" },
+    { name: "Reading List", icon: BookmarkSimple, href: "/checkouts" },
 ];
 
 const adminNavItems2 = [
@@ -17,12 +18,15 @@ const adminNavItems2 = [
 
 
 export const SidebarHeader = () => {
+
+
+export const SidebarHeader = () => {
     return (
         <div className='space-y-3'>
             <h1 className='text-4xl font-bold text-gray-800'>
                 My Library
             </h1>
-            <p className='text-gray-600 text-lg'>
+            <p className='text-lg text-gray-600'>
                 Admin Dashboard of My Library
             </p>
         </div>
@@ -30,7 +34,7 @@ export const SidebarHeader = () => {
 }
 
 export const SidebarPrimaryNavLinks = () => {
-    return (<div className='space-y-3 flex-grow h-full'>
+    return (<div className='flex-grow h-full space-y-3'>
         {adminNavItems.map((item, index) => (
             <NavLink
                 key={index}
@@ -38,7 +42,7 @@ export const SidebarPrimaryNavLinks = () => {
                 className={({ isActive }) => `flex items-center py-3 px-4 text-base font-medium  rounded-lg hover:bg-gray-100 hover:scale-95 transition duration-150 ease-in-out ${isActive ? "bg-gray-900 text-gray-100 hover:bg-gray-900" : ""
                     }`}
             >
-                <item.icon className='mr-4 h-6 w-6' />
+                <item.icon className='w-6 h-6 mr-4' />
                 {item.name}
             </NavLink>
         ))}
@@ -47,7 +51,7 @@ export const SidebarPrimaryNavLinks = () => {
 
 export const SidebarSecondaryNavLinks = () => {
     return (
-        <div className='border-t border-gray-200 pt-4'>
+        <div className='pt-4 border-t border-gray-200'>
             {adminNavItems2.map((item) => (
                 <a
                     key={item.name}
@@ -56,7 +60,7 @@ export const SidebarSecondaryNavLinks = () => {
                         "bg-gray-900 text-gray-100 hover:bg-gray-900 "
                         }`}
                 >
-                    <item.icon className='mr-4 h-6 w-6' />
+                    <item.icon className='w-6 h-6 mr-4' />
                     {item.name}
                 </a>
             ))}
@@ -66,7 +70,7 @@ export const SidebarSecondaryNavLinks = () => {
 
 export const SideBar = () => {
     return (
-        <div className='p-6 px-8 space-y-10 flex-col h-full border-b overflow-x-auto sticky top-0 sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white border-r-2 z-10 border-gray-100  hidden sm:flex'>
+        <div className='sticky top-0 z-10 flex-col hidden h-full p-6 px-8 space-y-10 overflow-x-auto bg-white border-b border-r-2 border-gray-100 sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/5 sm:flex'>
             <SidebarHeader />
             <SidebarPrimaryNavLinks />
             <SidebarSecondaryNavLinks />

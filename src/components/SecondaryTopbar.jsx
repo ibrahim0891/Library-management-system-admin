@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 
 const TopbarDropdown = ({ dropdownMenu }) => {
     return (
-        <button className="text-gray-600 hover:text-gray-800 transition-colors focus:outline-none">
+        <button className="text-gray-600 transition-colors hover:text-gray-800 focus:outline-none">
             <Dropdown>
                 <DropdownAction asChild>
-                    <DotsThreeVertical size={24} className=" hover:shadow-lg w-7 h-7 rounded-md" />
+                    <DotsThreeVertical size={24} className="rounded-md  hover:shadow-lg w-7 h-7" />
                 </DropdownAction>
-                <DropdownContent className="border text-left p-2 w-48 rounded-md" >
+                <DropdownContent className="w-48 p-2 text-left border rounded-md" >
                     {dropdownMenu && Object.keys(dropdownMenu).map((key) => (
-                        <Link to={dropdownMenu[key]} className="block px-4 py-2 text-md text hover:bg-slate-100 rounded-md " key={key}>
+                        <Link to={dropdownMenu[key]} className="block px-4 py-2 rounded-md text-md text hover:bg-slate-100 " key={key}>
                             {key}
                         </Link>
                     ))}
@@ -35,13 +35,14 @@ const TopbarDropdown = ({ dropdownMenu }) => {
  */
 const SecondaryTopbar = ({ pageTitle, dropdownMenu }) => { 
     return (
-        <div className="flex items-center justify-between bg-white p-4 sticky top-0 z-10 shadow-md">
-            <div onClick={() => window.history.back()} className="text-gray-600 hover:text-gray-800 transition-colors">
-                <CaretLeft className="h-7 w-5 cursor-pointer" weight="bold" />
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-white shadow-md">
+            <div onClick={() => window.history.back()} className="text-gray-600 transition-colors hover:text-gray-800">
+                <CaretLeft className="w-5 cursor-pointer h-7" weight="bold" />
             </div>
-            <div className="px-6 text-center w-4/5">
+            <div className="w-4/5 px-6 text-center">
                 <h1 className="text-lg font-semibold text-gray-800 sm:truncate">{pageTitle || "Secondary page"}</h1>
             </div>
+            <TopbarDropdown dropdownMenu={dropdownMenu} />
             <TopbarDropdown dropdownMenu={dropdownMenu} />
         </div>
     )

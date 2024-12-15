@@ -16,7 +16,7 @@ const FormField = ({ icon, label, id, value, type = "text", fieldName, placehold
         </Label>
         <input
             onChange={inputHandlerFuntion}
-            id={id} value={value} name={fieldName} type={type} placeholder={placeholder} required className="placeholder-gray-400 px-4 py-2 border w-full border-gray-200/70 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-300 ring-offset-3 focus:border-transparent my-2 "
+            id={id} value={value} name={fieldName} type={type} placeholder={placeholder} required className="w-full px-4 py-2 my-2 placeholder-gray-400 border rounded-md border-gray-200/70 focus:outline-none focus:ring-2 focus:ring-slate-300 ring-offset-3 focus:border-transparent "
         />
     </div>
 )
@@ -142,24 +142,24 @@ const BookForm = ({ bookObject }) => {
 
     ]
     return (
-        <div className="p-4 md:flex items-center justify-start ">
-            <Card className="block min-w-full lg:m-auto border-0 shadow-none">
+        <div className="items-center justify-start p-4 md:flex ">
+            <Card className="block min-w-full border-0 shadow-none lg:m-auto">
                 <CardContent>
-                    <CardHeader className="space-y-2 mb-2">
+                    <CardHeader className="mb-2 space-y-2">
                         <CardTitle className="flex items-center ">
                             <BookOpen size={24} className="mr-2" />
                             {bookObject ? `Edit Books` : "Add New Book"}
                         </CardTitle>
                         <CardDescription>{bookObject ? `Update book information of ${bookObject?.bookName} ` : "Add a new book for users to read."} </CardDescription>
                     </CardHeader>
-                    <form className="space-y-6 lg:grid grid-cols-2 gap-8  mb-6" onSubmit={handleSubmit}>
+                    <form className="grid-cols-2 gap-8 mb-6 space-y-6 lg:grid" onSubmit={handleSubmit}>
                         <div className="space-y-6">
-                            <fieldset className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <fieldset className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                 {topFormFields.map((field) => (
                                     <FormField key={field.id} {...field} />
                                 ))}
                             </fieldset>
-                            <fieldset className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <fieldset className="grid grid-cols-1 gap-4 md:grid-cols-3">
                                 {formFields.map((field) => (
                                     <FormField key={field.id} {...field} />
                                 ))}
@@ -179,7 +179,7 @@ const BookForm = ({ bookObject }) => {
                                 </Label>
                                 <select
                                     id="category"
-                                    className="w-full rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium text-gray-700 shadow-sm focus:border-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-200"
+                                    className="w-full p-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:border-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-200"
                                     value={inputs.category}
                                     onChange={handleInput}
 
@@ -196,14 +196,14 @@ const BookForm = ({ bookObject }) => {
                             </div>
                             <Label htmlFor="image" className="flex items-center mb-2"> Upload new image</Label>
                             <UploadComponent />
-                            <Button type="submit" className="w-full flex items-center justify-center bg-gray-700 hover:bg-slate-500">
+                            <Button type="submit" className="flex items-center justify-center w-full bg-gray-700 hover:bg-slate-500">
                                 {bookObject ? <PencilSimpleLine size={20} className="mr-3" /> : <Plus size={20} className="mr-3" />}
                                 {bookObject ? "Edit Book" : "Add book"}                            </Button>
 
                         </div>
                     </form>
                     <CardFooter>
-                        <div className="text-sm text-gray-500 text-center">
+                        <div className="text-sm text-center text-gray-500">
                             <p>As an admin, you are adding a book to the library system.</p>
                             <p className="mt-2">Need assistance? <a href="/admin-support" className="text-blue-500 hover:underline">Contact the admin support team</a>.</p>
                         </div>

@@ -5,6 +5,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import BookContext from "../Context/BookContext";
 import { BookCards, BookCard } from "../components/BookCard";
+import BookCatagories from "../components/BookCatagories";
 
 
 
@@ -23,7 +24,6 @@ const ManageBooks = () => {
         <div className="w-full p-4 bg-white">
             <div className="flex flex-col justify-between items-center  rounded-lg gap-3  ">
                 <div className="flex flex-wrap md:flex-nowrap gap-4 justify-center items-center w-full">
-                    <Link to={'/app/addbook'} className="w-full md:w-48 bg-green-500 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 ease-in-out flex items-center justify-center"> <Plus size={18} className="mr-2"></Plus> Add Book </Link>
                     <div className="flex items-center w-full flex-grow gap-2 p-2 border rounded-md">
                         <input type="search" placeholder="Search" className="w-full px-4 py-2 rounded-md  border-gray-300 focus:outline-none" />
                         <button className="bg-gray-500 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 ease-in-out"> Search </button>
@@ -51,8 +51,10 @@ const ManageBooks = () => {
                 </div>
 
             </div>
-
-            <BookCards books={books} />
+            <div>
+                <BookCatagories></BookCatagories>
+            </div>
+            {/* <BookCards books={books} /> */}
         </div>
 
     )
@@ -68,7 +70,7 @@ const ManageBooks = () => {
 const Books = () => {
     let { context, setContext } = useOutletContext()
     useEffect(() => {
-        setContext({ pageTitle: "Manage books" })
+        setContext({ pageTitle: "Browse Books" })
     }, [])
     return (
         <ManageBooks></ManageBooks>

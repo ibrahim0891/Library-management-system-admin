@@ -24,7 +24,7 @@ function Root() {
             {
                 books ? <BookContext.Provider value={books}>
                     <App />
-                </BookContext.Provider> : <div className='w-full h-screen flex items-center justify-center'> <Spinner className='animate-spin' /></div>
+                </BookContext.Provider> : <div className='flex items-center justify-center w-full h-screen'> <Spinner className='animate-spin' /></div>
             }
         </StrictMode> 
     )
