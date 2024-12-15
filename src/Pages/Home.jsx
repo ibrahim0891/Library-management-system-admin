@@ -6,8 +6,7 @@ import { SideBar } from "../components/Sidebar";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-    const [context , setContext ] = useState({})
-    console.log(context);
+    const [context , setContext ] = useState({}) 
     return (
         <div className='h-screen bg-gray-50 w-full flex  mx-auto border-2 border-gray-100'>
 

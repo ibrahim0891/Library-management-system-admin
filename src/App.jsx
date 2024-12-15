@@ -6,6 +6,7 @@ import SecondaryPage from './Pages/SecondaryPage';
 import NotFound from './Pages/NotFound';
 import BookDetails from './Pages/BookDetails';
 import AddBook from './Pages/Addbook';
+import EditBook from './Pages/EditBook';
 
 
 
@@ -23,6 +24,7 @@ function App() {
                     <Route path='/app' element={<SecondaryPage />} >
                         <Route path='/app/:bookId' element={<BookDetails />} />
                         <Route path='/app/addbook' element={<AddBook />} />
+                        <Route path='/app/editbook/:bookId' element={<EditBook />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
