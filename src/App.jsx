@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
-import Dashboard from './Pages/Dashboard';
+import Dashboard from './Pages/LandingPage';
 import Books from './Pages/Books';
 import SecondaryPage from './Pages/SecondaryPage';
 import NotFound from './Pages/NotFound';
 import BookDetails from './Pages/BookDetails';
 import AddBook from './Pages/Addbook';
+import EditBook from './Pages/EditBook';
 
 
 
@@ -23,6 +24,7 @@ function App() {
                     <Route path='/app' element={<SecondaryPage />} >
                         <Route path='/app/:bookId' element={<BookDetails />} />
                         <Route path='/app/addbook' element={<AddBook />} />
+                        <Route path='/app/editbook/:bookId' element={<EditBook />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
